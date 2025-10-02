@@ -1,4 +1,4 @@
-#1. Choix de conception
+# 1. Choix de conception
 
 Pour cette API, j’ai fait le choix de séparer clairement les responsabilités :
 
@@ -20,7 +20,7 @@ J’ai configuré Monolog pour générer des fichiers de logs quotidiens avec un
 Chaque fichier est limité à 30 Mo et les plus anciens sont automatiquement supprimés après 60 jours.
 En plus, un mail d’alerte peut être envoyé si la taille des logs dépasse la limite, ce qui permet de surveiller facilement la santé de l’application.
 
-#2. Risques ou inconvénients potentiels
+# 2. Risques ou inconvénients potentiels
 
 Les collisions de SKU : elles sont rares, mais pas impossibles. J’ai prévu une régénération automatique, mais en cas de très forte volumétrie, il faudrait envisager un système encore plus robuste.
 
@@ -30,7 +30,7 @@ La performance avec Doctrine : l’ORM est très pratique mais peut devenir lour
 
 Les logs : même si la rotation est en place, en cas de pic d’activité les logs peuvent encore devenir volumineux. Sans compression ou archivage externe, le serveur peut saturer.
 
-#3. Préparation pour un environnement de production à fort trafic
+# 3. Préparation pour un environnement de production à fort trafic
 
 Pour préparer cette API à la production et à une utilisation intensive, je mettrais en place plusieurs optimisations :
 
