@@ -45,13 +45,13 @@ final class ProductControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('POST', '/api/products', [], [], ['CONTENT_TYPE' => 'application/json'], json_encode([
-            'name' => 'Produit SEO Optimisé',
-            'price' => 19.99
+            'name' => 'ONE PIECE Statue BIJUtsu Zoro The Monster',
+            'price' => 799.90
         ]));
 
         $this->assertResponseStatusCodeSame(201);
         $data = json_decode($client->getResponse()->getContent(), true);
-        $this->assertSame('Produit SEO Optimisé', $data['data']['name']);
+        $this->assertSame('ONE PIECE Statue BIJUtsu Zoro The Monster', $data['data']['name']);
     }
 
     /**
@@ -63,7 +63,7 @@ final class ProductControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('POST', '/api/products', [], [], ['CONTENT_TYPE' => 'application/json'], json_encode([
-            'name' => 'AB',
+            'name' => 'One ',
             'price' => 10
         ]));
 
@@ -81,7 +81,7 @@ final class ProductControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('POST', '/api/products', [], [], ['CONTENT_TYPE' => 'application/json'], json_encode([
-            'name' => 'Produit Correct',
+            'name' => 'SAINT SEIYA Final Edition Tome 4',
             'price' => 0
         ]));
 
@@ -113,7 +113,7 @@ final class ProductControllerTest extends WebTestCase
 
         // Crée un produit
         $client->request('POST', '/api/products', [], [], ['CONTENT_TYPE' => 'application/json'], json_encode([
-            'name' => 'Produit Initial',
+            'name' => 'SAINT SEIYA Final Edition Tome 4',
             'price' => 9.99
         ]));
 
@@ -122,13 +122,13 @@ final class ProductControllerTest extends WebTestCase
 
         // Met à jour le produit
         $client->request('PUT', "/api/products/$id", [], [], ['CONTENT_TYPE' => 'application/json'], json_encode([
-            'name' => 'Produit Modifié',
-            'price' => 15.00
+            'name' => 'SAINT SEIYA Final Edition Tome 4 premier tirage Kana',
+            'price' => 10.25
         ]));
 
         $this->assertResponseStatusCodeSame(200);
         $updated = json_decode($client->getResponse()->getContent(), true);
-        $this->assertSame('Produit Modifié', $updated['data']['name']);
+        $this->assertSame('SAINT SEIYA Final Edition Tome 4 premier tirage Kana', $updated['data']['name']);
     }
 
     /**
@@ -147,8 +147,8 @@ final class ProductControllerTest extends WebTestCase
         $date = (new \DateTimeImmutable())->format('Ymd');
         $file = "$logDir/{$date}-gestion-produit.log";
 
-        // Simule un fichier log dépassant la taille max (25 Mo)
-        file_put_contents($file, str_repeat("x", 26 * 1024 * 1024));
+        // Simule un fichier log dépassant la taille max (30 Mo)
+        file_put_contents($file, str_repeat("x", 31 * 1024 * 1024));
 
         $client = static::createClient();
         $client->request('POST', '/api/products', [], [], ['CONTENT_TYPE' => 'application/json'], json_encode([
