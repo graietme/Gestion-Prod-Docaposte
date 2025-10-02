@@ -1,0 +1,12 @@
+# Auteur : Mehdi Graiet
+# Version : 1.0.0
+# Description : Configuration métier de l'API Produits
+
+app:
+  product:
+    name_min_length: 5
+    name_max_length: 100
+    sku_max_length: 17
+  logs:
+    max_size_mb: 25
+    alert_email: '%env(APP_ALERT_EMAIL)%'

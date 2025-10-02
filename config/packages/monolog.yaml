@@ -1,0 +1,15 @@
+monolog:
+    channels: ["product"]
+    handlers:
+        product:
+            type: rotating_file
+            # Format AAAAMMJJ-gestion-produit.log
+            path: "%kernel.logs_dir%/%datetime{Ymd}%-gestion-produit.log"
+            # Niveau de log (info = tout ce qui est info, warning, error, critical)
+            level: info
+            # Taille max d'un fichier de log = 30 Mo
+            max_filesize: 30M
+            # Conservation = 60 fichiers
+            max_files: 60
+            # Canal utilisé
+            channels: ["product"]
