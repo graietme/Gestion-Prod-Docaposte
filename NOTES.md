@@ -34,15 +34,17 @@ Les logs : même si la rotation est en place, en cas de pic d’activité les lo
 
 Pour préparer cette API à la production et à une utilisation intensive, je mettrais en place plusieurs optimisations :
 
-Performances et scalabilité : mise en cache (Redis/Memcached) pour réduire les accès DB, indexation des colonnes importantes (comme sku et name), et possibilité de déployer en cluster (Docker/Kubernetes).
+Performances et scalabilité : mise en cache (Redis/Memcached) pour réduire les accès DB, indexation des colonnes importantes (comme sku et name).
 
-Base de données : mise en place de la réplication ou du sharding si la volumétrie devient importante, afin de répartir la charge.
+Base de données : mise en place de la réplication ou du sharding si la volumétrie devient importante, afin de répartir la charge, effectuer des sauvegardes fréquentes avec un CRON.
 
 Logs et monitoring : connecter les logs à un système centralisé (ELK Stack, Grafana/Prometheus) pour pouvoir suivre en temps réel les erreurs, la charge et l’utilisation.
 
 Sécurité : protéger les endpoints avec une authentification JWT ou OAuth2 et mettre en place un système de limitation de débit (rate limiting) pour éviter les abus.
 
 Documentation : fournir une documentation claire de l’API avec OpenAPI/Swagger pour faciliter l’intégration par d’autres équipes ou partenaires.
+
+Les logs : Compression et Archivage des logs tous les 30 jours sur un autre serveur.
 
 # Notes techniques - Version 1.0.0
 
